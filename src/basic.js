@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import ReactFlow, { addEdge, MiniMap, Controls } from 'react-flow-renderer';
 
+import HsdNode from './Custom'
 const initialElements = [
   {
     id: 'interaction-1',
@@ -29,6 +30,14 @@ const initialElements = [
     source: 'interaction-1',
     target: 'interaction-2',
     animated: true,
+  },
+  {
+    id : 'custom',
+    type: 'hsdType',
+    data : {
+        label : 'HSD'
+    },
+    position: {x:400, y:300}
   },
   { id: 'interaction-e1-3', source: 'interaction-1', target: 'interaction-3' },
 ];
@@ -78,6 +87,7 @@ const InteractionFlow = () => {
       onPaneContextMenu={captureZoomClick ? onPaneContextMenu : undefined}
       onLoad={onLoad}
       style={{width: "100%", height:"500px"}}
+      nodeTypes={ {hsdType : HsdNode}}
     >
       <MiniMap />
       <Controls />
