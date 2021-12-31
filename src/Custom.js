@@ -9,6 +9,7 @@ import ReactFlow, {
     useStoreActions,
     useStoreState,
     useStore,
+    
     isNode,
     isEdge,
     ReactFlowProvider,
@@ -25,20 +26,30 @@ import ReactFlow, {
 
 const CustomNode = (props) => {
     const [outputcount, setOutputCount] = React.useState(2);
-  
+    const [bgColor, setBgColor] = React.useState("lavender");
+    const [count, setCount] = React.useState(0);
+    React.useEffect(() => {
+        console.log("use Effect" + bgColor);
+        setBgColor("#eee");
+        document.getElementById('bg').style.backgroundColor = bgColor;
+      }, [bgColor]);
     return (
       <>
         <div
+          id="bg"
           style={{
             border: "1px solid black",
-            backgroundColor: "lavender",
+            backgroundColor: {bgColor},
+            //backgroundColor: "lavender",
             borderRadius: 4,
             padding: 5
           }}
         >
-          HSD
+          HSD {count}
           <hr />
-          <button onClick={() => setOutputCount((i) => i + 1)}>
+          <button onClick={() => {
+              setOutputCount((i) => i + 1);console.log({bgColor});setBgColor("red");setCount(count+1);
+              }}>
             {" "}
             add output
           </button>

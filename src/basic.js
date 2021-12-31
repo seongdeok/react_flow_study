@@ -24,6 +24,7 @@ const initialElements = [
     id: 'interaction-4',
     data: { label: 'Node 4' },
     position: { x: 400, y: 200 },
+    style : { backgroundColor : '#eee'}
   },
   {
     id: 'interaction-e1-2',
@@ -37,14 +38,19 @@ const initialElements = [
     data : {
         label : 'HSD'
     },
-    position: {x:400, y:300}
+    position: {x:400, y:300},
+    
   },
   { id: 'interaction-e1-3', source: 'interaction-1', target: 'interaction-3' },
 ];
 
 const onNodeDragStart = (event, node) => console.log('drag start', node);
 const onNodeDragStop = (event, node) => console.log('drag stop', node);
-const onElementClick = (event, element) => console.log('click', element);
+const onElementClick = (event, element) => {
+    console.log('click', element);
+    element.data.label = "CLICKED";
+    //element.style = {backgroundColor : '#eee'};
+}
 const onPaneClick = (event) => console.log('onPaneClick', event);
 const onPaneScroll = (event) => console.log('onPaneScroll', event);
 const onPaneContextMenu = (event) => console.log('onPaneContextMenu', event);
